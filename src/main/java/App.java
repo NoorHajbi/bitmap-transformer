@@ -53,10 +53,42 @@ public class App {
         File output = new File("./app/src/main/resources/"+targetName+".bmp");
         try {
             ImageIO.write(result, "bmp", output);
+
         } catch (IOException e) {
             System.out.println("ERROR!");
             System.out.println(e);
         }
+    }
+    public static void RotateImage(Path path, File newPath){
+        try {
+            BufferedImage image= ImageIO.read(new File(path.toUri()));
+            int w = image.getHeight();
+            int h=image.getHeight();
+            BufferedImage bufferedImage = new BufferedImage(h,w, image.TYPE_INT_RGB);
+
+            for (int row=0; row<w;row++){
+
+                for (int col=0;col<h;col++){
+                    int val= image.getRGB(row,col);
+                    bufferedImage.setRGB(col,w-row-1,val);
+
+                }
+            }
+            ImageIO.write(bufferedImage,"jpg",newPath);
+
+
+
+
+
+        } catch (IOException e){
+            System.out.println("ERROR!");
+            System.out.println(e);
+
+
+        }
+
+
+
     }
     public String getGreeting() {
         return "Hello world.";
@@ -66,7 +98,11 @@ public class App {
     public static void main(String[] args) {
         Path path = Paths.get("src/main/resources/nature.bmp");
         File newPath = new File("src/main/resources/natureR.bmp");
+        File newPathR = new File("src/main/resources/natureRggf.bmp");
+
         imageReading(path, newPath );
+        RotateImage(path, newPathR );
+
         System.out.print("PAth  "+newPath);
     }
 }
