@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Scanner;
 
 public class App {
     public static void imageReading(Path path, File newPath){
@@ -64,8 +65,8 @@ public class App {
 
 
     public static void main(String[] args) {
-        Path path = Paths.get("src/main/resources/nature.bmp");
-        File newPath = new File("src/main/resources/natureR.bmp");
+        Path path = Paths.get("src/main/resources/input/nature.bmp");
+        File newPath = new File("src/main/resources/output/natureR.bmp");
         imageReading(path, newPath );
         System.out.print("PAth  "+newPath);
     }
