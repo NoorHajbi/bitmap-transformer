@@ -14,10 +14,7 @@ public class App {
 
         //To read width and height of the original image
         int w = image.getWidth(), h = image.getHeight();
-
         BufferedImage bufferedImage = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
-
-
         for (int row = 1; row < w; row++) {
             for (int col = 1; col < h; col++) {
                 //Get RGB Value
